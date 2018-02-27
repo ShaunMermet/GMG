@@ -4,7 +4,7 @@
 	$meterLat = 0.000009;
 	$meterLong = 0.000012;
 
-	$newFolderPath =  str_replace(".","_","img/".microtime(true));
+	$newFolderPath =  '../'.str_replace(".","_","img/".microtime(true));
 	mkdir($newFolderPath);
 	echo "create folder : ".$newFolderPath."<br>";
 	$satelittePath = $newFolderPath."/satellite";
@@ -299,4 +299,15 @@ The limit of requests is 25000 every 24h so it's better to keep the original num
     //February 2
 	//36.338680 138.620590
 	//36.320750 138.651834
+
+	//Hirota-san
+	//35.913320 139.504943
+	//35.849201 139.639783
+    //mid
+	//35.8812605
+
+    //				139.504943 		139.572363		139.639783
+	//35.913320
+	//35.8812605
+	//35.849201
 ?>

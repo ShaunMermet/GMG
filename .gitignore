@@ -83,3 +83,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+data/gps2.txt
+data/gps3.txt

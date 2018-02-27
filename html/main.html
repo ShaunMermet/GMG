@@ -1,0 +1,64 @@
+<?php  
+echo "today is:".date("Y-m-d");  
+?>  
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GMG</title>
+  </head>
+  <body>
+    <h4>Google Map Generator</h4>
+    Enter value wanted below then press "Preview"
+    <br>
+    <br>
+    <br>
+    <form action="../php/main.php">
+      Latitude top-left([-90,90]): <input type="text" name="latTL"><br>
+      Longitude top-left([-180,180]): <input type="text" name="longTL"><br>
+      <br>
+      Latitude bottom-right: <input type="text" name="latBR"><br>
+      Longitude bottom-right: <input type="text" name="longBR"><br>
+      <br>
+      Scale (1-21, 21 is max-zoom): <input type="text" name="scale"><br>
+      <br>
+      Interval (In meter): <input type="text" name="interval"><br>
+      <br>
+      File format (jpg-png. Default is jpg): <input type="text" name="format"><br>
+      <br>
+      Max Number of Images: <input type="text" name="maxImages"><br>
+      <br>
+      API Key: <input type="text" name="APIkey"><br>
+      <br>
+      <input type="button" value="Preview" onclick="calcNbrImages()">
+      <input type="submit" value="Generate">
+    </form>
+    <div id="calcResult1"></div>
+    <div id="calcResult2"></div>
+      
+    
+    <script>
+      function calcNbrImages() {
+          var meterLat = 0.000009;
+          var meterLong = 0.000012;
+          
+          var latTL = document.getElementsByName('latTL')[0].value;
+          var longTL = document.getElementsByName('longTL')[0].value;
+
+          var latBR = document.getElementsByName('latBR')[0].value;
+          var longBR = document.getElementsByName('longBR')[0].value;
+          
+          var interval = document.getElementsByName('interval')[0].value;
+
+          var longDiff = longBR-longTL;
+          var latDiff = latTL-latBR;
+          nbrImagesLong = longDiff/(meterLong*interval);
+          nbrImagesLat = latDiff/(meterLat*interval);
+
+          document.getElementById("calcResult1").innerHTML = "~ "+Math.ceil(nbrImagesLong)*Math.ceil(nbrImagesLat)+" Images";
+
+          document.getElementById("calcResult2").innerHTML = "~ "+Math.ceil(nbrImagesLat)+" x "+Math.ceil(nbrImagesLong)+" Images";
+          
+      }
+    </script>
+  </body>
+</html>
